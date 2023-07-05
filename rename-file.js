@@ -1,6 +1,6 @@
 import { rename } from 'node:fs'
 
-const renameFile = (oldName, newName) =>{
+export const renameFile = (oldName, newName) =>{
     rename(oldName, newName,
         (err) =>{
             if(err) throw err
