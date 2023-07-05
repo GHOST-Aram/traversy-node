@@ -1,8 +1,29 @@
-const EventEmitter = require('events')
+import { EventEmitter } from 'node:events'
+const eventEmitter = new EventEmitter()
+
+export class Emitter {
+    addListener = (listener, handler) =>{
+        new EventEmitter().addListener(listener, handler)
+    }
+
+    prependListener = (listener, handler)=>{
+        new EventEmitter().prependListener(listener, handler)
+    }
+
+    emit = (listener, param) =>{
+        eventEmitter.emit(listener, param)
+    }
+
+    setMaxListeners = (max) =>{
+        eventEmitter.setMaxListeners(max)
+    }
+    on = (listener, handler) => {
+        eventEmitter.on(listener, handler)
+    }
+}
+
 
 const kill = (name) => console.log(`${name} is dead.`)
-
-const eventEmitter = new EventEmitter()
 eventEmitter.prependListener('violence  ', (someLaw) => {
     console.log('Registered: ', someLaw)
 })
