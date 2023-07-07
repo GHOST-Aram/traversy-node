@@ -9,8 +9,22 @@ export const renameFile = (oldName, newName) =>{
     )
 }
 
+class FileSystem{
+
+    rename = (oldname, newname) =>{
+        rename(oldname, newname, 
+            error =>{
+                if(error) throw error
+                console.log('File renamed successfully')
+            }
+        )
+    }
+}
+
+const filesys = new FileSystem()
+
 try {
-    renameFile('./appendFile.js', './append-file.js')
+    filesys.rename('./appendfile.js', './append-file.js')
 } catch (error) {
     console.error(error)
 }
